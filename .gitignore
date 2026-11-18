@@ -1,0 +1,15 @@
+
+# Archivos compilados de Java
+*.class
+
+# Temporales del editor
+.vscode/
+.idea/
+*.swp
+*~
+*.tmp
+
+# Temporales del sistema
+.DS_Store
+Thumbs.db
+desktop.ini
