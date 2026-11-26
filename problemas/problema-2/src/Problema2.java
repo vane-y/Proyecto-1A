@@ -2,22 +2,38 @@ import java.util.Scanner;
 
 public class Problema2 {
     public static void main(String[] args) {
-        // Creamos el objeto Scanner para leer datos ingresados desde la consola
         Scanner lector = new Scanner(System.in);
 
-        // Solicitamos los datos de entrada (ajusta estos textos segun el enunciado del problema 2)
-        System.out.print("Ingresa el primer valor: ");
-        double valor1 = lector.nextDouble();
+        System.out.print("Precio del equipo: ");
+        double precio = lector.nextDouble();
+        System.out.print("Comprador estudiante acreditado (1 = si, 0 = no): ");
+        int p = lector.nextInt();
+        System.out.print("Equipo de catalogo educativo (1 = si, 0 = no): ");
+        int q = lector.nextInt();
 
-        System.out.print("Ingresa el segundo valor: ");
-        double valor2 = lector.nextDouble();
+        if (precio < 0) {
+            System.out.println("Error: el precio no puede ser negativo.");
+        } else if ((p != 0 && p != 1) || (q != 0 && q != 1)) {
+            System.out.println("Error: escribe solo 1 o 0.");
+        } else {
+            boolean esEstudiante = (p == 1);
+            boolean esEducativo = (q == 1);
+            int porcentaje;
 
-        // Calculamos el resultado (ajusta la formula o logica segun lo que pida el problema 2)
-        double resultado = valor1 + valor2;
+            if (esEstudiante && esEducativo) {
+                porcentaje = 0;
+            } else if (esEstudiante ^ esEducativo) {
+                porcentaje = 8;
+            } else {
+                porcentaje = 16;
+            }
 
-        // Mostramos el resultado final en pantalla
-        System.out.println("Resultado: " + resultado);
+            double impuesto = precio * porcentaje / 100;
+            double total = precio + impuesto;
 
-        lector.close();
+            System.out.println("Impuesto aplicable: " + porcentaje + "%");
+            System.out.println("Impuesto a pagar: " + impuesto);
+            System.out.println("Total a pagar: " + total);
+        }
     }
 }
